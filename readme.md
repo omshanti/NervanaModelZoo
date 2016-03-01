@@ -27,10 +27,10 @@ of the vairous tasks and models included here that address those tasks.
 
 ### NLP
 #### bAbI (Question Answering)
-     - GRU/LSTM model
+  - GRU/LSTM model
 
 #### Sentiment classification
-    - LSTM (IMDB dataset)
+  - LSTM (IMDB dataset)
 
 ### Video
-    - C3D (UCF101 dataset)
+  - C3D (UCF101 dataset)
