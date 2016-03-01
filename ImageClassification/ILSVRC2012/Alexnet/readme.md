@@ -5,7 +5,7 @@ This is an implementation of a deep convolutional neural network model inspired 
 The model presented here does not include any Local Response Normalization layers as was used in the original implementation.
 
 ### Model script
-The model run script is included below ([alexnet_neon.py](https://gist.github.com/nervanazoo/14bb75d2bb5f20d9c482#file-alexnet_neon-py)).
+The model run script is included below [alexnet_neon.py].
 
 ### Trained weights
 The trained weights file can be downloaded from AWS using the following link: [trained Alexnet model weights](https://s3-us-west-1.amazonaws.com/nervana-modelzoo/alexnet/alexnet.p).
