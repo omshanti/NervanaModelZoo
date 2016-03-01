@@ -6,7 +6,7 @@ The model presented here does not include any Local Response Normalization layer
 
 ### Model script
 
-The model run script is included below ([googlenet_neon.py](https://gist.github.com/nervanazoo/2e5be01095e935e90dd8#file-googlenet_neon-py))
+The model run script is included here [googlenet_neon.py](./googlenet_neon.py).
 
 
 ### Trained weights

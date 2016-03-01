@@ -4,8 +4,7 @@ This is an implementation of a deep convolutional neural network model inspired 
 [Springenberg, Dosovitskiy, Brox, Riedmiller 2014](http://arxiv.org/abs/1412.6806). 
 
 ### Model script
-The model run script is included below 
-([cifar10_allcnn.py](https://gist.github.com/nervanazoo/47198f475260e77f64fe#file-cifar10_allcnn-py)).
+The model run script is included below [cifar10_allcnn.py](./cifar10_allcnn.py).
 
 ### Trained weights
 The trained weights file can be downloaded from AWS 
