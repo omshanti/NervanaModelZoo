@@ -4,9 +4,9 @@ name: LSTM image captioning model based on CVPR 2015 paper "[Show and tell: A ne
 generator](http://arxiv.org/abs/1411.4555)" and code from Karpathy's 
 [NeuralTalk](https://github.com/karpathy/neuraltalk).
 
-model_script: image_caption.py
+model_script: [image_caption.py](https://github.com/nervanazoo/NervanaModelZoo/blob/master/ImageCaptioning/LSTM/image_caption.py)
 
-model_weights: https://s3-us-west-1.amazonaws.com/nervana-modelzoo/imagecaption/lstm/image_caption_flickr8k.p
+model_weights: [image_caption_flickr8k.p](https://s3-us-west-1.amazonaws.com/nervana-modelzoo/imagecaption/lstm/image_caption_flickr8k.p)
 
 neon_commit: [e7ab2c2e2](https://github.com/NervanaSystems/neon/commit/e7ab2c2e27f113a4d36d17ba8c79546faed7d916)
 
