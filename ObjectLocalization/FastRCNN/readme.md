@@ -6,7 +6,7 @@ used for object detection.
 The model in the paper and code is based on either VGG16 or Caffenet which are pre-trained using ImageNet I1K
 dataset. The model presented here is based on an Alexnet pretrained in Neon using ImageNet I1K dataset. The
 training script will download the Alexnet weights from neon model zoo
-[Alexnet](https://gist.github.com/nervetumer/64fe5ea27569c9042d8b#file-alexnet_neon-py).
+[Alexnet](https://github.com/nervanazoo/NervanaModelZoo/tree/master/ImageClassification/ILSVRC2012/Alexnet)
 
 The model from the original code processes 2 images in each minibatch and the model presented here processes minibatch
 with size being mulitple of 32. Both image minibatch size and how manny ROIs to pull from each image are configurable

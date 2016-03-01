@@ -32,6 +32,8 @@ from neon.data import ImageLoader
 parser = NeonArgparser(__doc__)
 parser.add_argument('--subset_pct', type=float, default=100,
                     help='subset of training dataset to use (percentage)')
+parser.add_argument('--test_only', action='store_true',
+                    help='skip fitting - evaluate metrics on trained model weights')
 args = parser.parse_args()
 
 # setup data provider
@@ -121,6 +123,7 @@ cost = Multicost(costs=[GeneralizedCost(costfunc=CrossEntropyMulti()),
 assert os.path.exists(args.model_file), 'script requires the trained weights file'
 model.load_params(args.model_file)
 model.initialize(test, cost)
+
 
 print 'running speed benchmark...'
 model.benchmark(test, cost, opt)

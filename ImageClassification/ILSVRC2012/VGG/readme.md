@@ -3,10 +3,12 @@
 Here we have ported the weights for the 16 and 19 layer VGG models from the Caffe model zoo (see [link](https://github.com/BVLC/caffe/wiki/Model-Zoo#models-used-by-the-vgg-team-in-ilsvrc-2014))
 
 ### Model script
-The model run script is included below ([vgg_neon.py](https://gist.github.com/nervanazoo/e74ebe6418852f547aa8#file-vgg_neon-py)).  This script can easily be adapted for fine tuning this network but we have focused on inference here because a successful training protocol may require details beyond what is available from the Caffe model zoo.
+The model run script is included here [vgg_neon.py](./vgg_neon.py).  This script can easily be adapted for fine tuning this network but we have focused on inference here because a successful training protocol may require details beyond what is available from the Caffe model zoo.
 
 ### Trained weights
-The trained weights file can be downloaded from AWS using the following links: [VGG_D.p]( https://s3-us-west-1.amazonaws.com/nervana-modelzoo/VGG/VGG_D.p) and [VGG_E.p]( https://s3-us-west-1.amazonaws.com/nervana-modelzoo/VGG/VGG_E.p).
+The trained weights file can be downloaded from AWS using the following links:
+[VGG_D.p]( https://s3-us-west-1.amazonaws.com/nervana-modelzoo/VGG/VGG_D.p) and [VGG_E.p][S3_WEIGHTS_FILE].
+[S3_WEIGHTS_FILE]: https://s3-us-west-1.amazonaws.com/nervana-modelzoo/VGG/VGG_E.p
 
 ## Performance
 

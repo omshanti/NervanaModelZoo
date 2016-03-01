@@ -2,7 +2,7 @@
 
 This is an implementation of Facebook's baseline GRU/LSTM model on the bAbI dataset 
 [Weston et al. 2015](https://research.facebook.com/researchers/1543934539189348).
-It includes an [interactive demo](https://gist.github.com/SNagappan/a7be6ce6e75c36c7406e#file-demo-py).
+It includes an interactive demo script [demo.py](./demo.py).
 
 The bAbI dataset contains 20 different question answering tasks.
 
