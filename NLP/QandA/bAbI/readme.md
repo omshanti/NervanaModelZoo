@@ -7,8 +7,10 @@ It includes an [interactive demo](https://gist.github.com/SNagappan/a7be6ce6e75c
 The bAbI dataset contains 20 different question answering tasks.
 
 ### Model script
-The following links can be used to get the model training script [train.py](https://s3-us-west-1.amazonaws.com/nervana-modelzoo/bAbI/train.py) 
-and demo script [demo.py](https://s3-us-west-1.amazonaws.com/nervana-modelzoo/bAbI/demo.py).
+
+The scripts [train.py](https://github.com/nervanazoo/NervanaModelZoo/blob/master/NLP/QandA/bAbI/train.py)
+and [demo.py](https://github.com/nervanazoo/NervanaModelZoo/blob/master/NLP/QandA/bAbI/demo.py) included
+here show how to train and run the model, respectively.
 
 ### Instructions
 

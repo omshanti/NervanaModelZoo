@@ -1,15 +1,20 @@
-##Model
 
 This is an implementation of a LSTM model to solve the IMDB sentiment classification task.
 
 
 ### Model script
-The model run script is included below ([imdb_lstm.py](https://gist.github.com/nervanazoo/976ec931bb4549131ae0#file-imdb_lstm-py)).
+
+
+The [imdb_lstm.py](https://github.com/nervanazoo/NervanaModelZoo/blob/master/NLP/SentimentClassification/IMDB/imdb_lstm.py)
+script shows how to train the model.
 
 ### Trained weights
-The trained weights file can be downloaded from AWS using the following link: [imdb_lstm.p]( https://s3-us-west-1.amazonaws.com/nervana-modelzoo/imdb_lstm/imdb_lstm.p).
+
+The trained weights file can be downloaded from AWS using the following link:
+[imdb_lstm.p]( https://s3-us-west-1.amazonaws.com/nervana-modelzoo/imdb_lstm/imdb_lstm.p).
 
 ### Performance
+
 This model is acheiving 94.3% and 84.5% accuracy on the training and validation set, respectively.
 
 ### Instructions
