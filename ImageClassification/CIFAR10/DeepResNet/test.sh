@@ -22,7 +22,7 @@ WEIGHTS_URL=`grep "\[S3_WEIGHTS_FILE\]:" readme.md  | sed "s/\[S3_WEIGHTS_FILE\]
 WEIGHTS_FILE=${WEIGHTS_URL##*/}
 curl -o $WEIGHTS_FILE $WEIGHTS_URL
 
-python -u $TEST_SCRIPT  -i ${EXECUTOR_NUMBER} -vvv --model_file $WEIGHTS_FILE --no_progress_bar > output.dat
+python -u $TEST_SCRIPT  -i ${EXECUTOR_NUMBER} -vvv --model_file $WEIGHTS_FILE --no_progress_bar -w /mnt/data/cifar10 > output.dat
 rc=$?
 if [ $rc -ne 0 ];then
     exit $rc
