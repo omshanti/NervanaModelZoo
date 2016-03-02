@@ -8,7 +8,8 @@ The model run script is included below [cifar10_allcnn.py](./cifar10_allcnn.py).
 
 ### Trained weights
 The trained weights file can be downloaded from AWS 
-([cifar10_allcnn_e350.p](https://s3-us-west-1.amazonaws.com/nervana-modelzoo/cifar10_allcnn/cifar10_allcnn_e350.p))
+[cifar10_allcnn_e350.p][S3_WEIGHTS_FILE].
+[S3_WEIGHTS_FILE]: https://s3-us-west-1.amazonaws.com/nervana-modelzoo/cifar10_allcnn/cifar10_allcnn_e350.p
 
 ### Performance
 This model is acheiving 89.5% top-1 accuracy on the validation data set.  This is done using zca whitened, 

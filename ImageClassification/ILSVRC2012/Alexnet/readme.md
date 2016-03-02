@@ -8,7 +8,9 @@ The model presented here does not include any Local Response Normalization layer
 The model run script is included below [alexnet_neon.py](./alexnet_neon.py).
 
 ### Trained weights
-The trained weights file can be downloaded from AWS using the following link: [trained Alexnet model weights](https://s3-us-west-1.amazonaws.com/nervana-modelzoo/alexnet/alexnet.p).
+The trained weights file can be downloaded from AWS using the following link:
+[trained Alexnet model weights][S3_WEIGHTS_FILE]
+[S3_WEIGHTS_FILE]: https://s3-us-west-1.amazonaws.com/nervana-modelzoo/alexnet/alexnet.p
 
 ### Performance
 This model is acheiving 56.0% top-1 and 79.3% top-5 accuracy on the validation data set.  The training here is using a single, random crop on every epoch and flipping the images across the vertical axis.  These results improve further with additional data augmentation added to the training as decsribed in [Krizhevsky,Sutskever, Hinton 2012](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks).

@@ -36,6 +36,8 @@ parser.add_argument("--learning_rate", default=0.05, help="initial learning rate
 parser.add_argument("--weight_decay", default=0.001, help="weight decay")
 parser.add_argument('--deconv', action='store_true',
                     help='save visualization data from deconvolution')
+parser.add_argument('--test_only', action='store_true',
+                    help='skip fitting - evaluate metrics on trained model weights')
 args = parser.parse_args()
 
 # hyperparameters
@@ -90,5 +92,9 @@ callbacks = Callbacks(model, eval_set=valid_set, **args.callback_args)
 if args.deconv:
     callbacks.add_deconv_callback(train_set, valid_set)
 
-model.fit(train_set, optimizer=opt_gdm, num_epochs=num_epochs, cost=cost, callbacks=callbacks)
-print('Misclassification error = %.1f%%' % (model.eval(valid_set, metric=Misclassification())*100))
+if not args.test_only:
+    model.fit(train_set, optimizer=opt_gdm, num_epochs=num_epochs, cost=cost, callbacks=callbacks)
+
+valmetric = Misclassification()
+mets = model.eval(valid_set, metric=valmetric)
+print 'Accuracy: %.1f %% (Top-1)' % ((1.0-mets[0])*100)

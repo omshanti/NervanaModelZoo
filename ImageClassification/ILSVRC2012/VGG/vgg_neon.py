@@ -37,6 +37,8 @@ parser.add_argument('--vgg_version', default='D', choices=['D', 'E'],
                     help='vgg model type')
 parser.add_argument('--subset_pct', type=float, default=100,
                     help='subset of training dataset to use (percentage)')
+parser.add_argument('--test_only', action='store_true',
+                    help='skip fitting - evaluate metrics on trained model weights')
 args = parser.parse_args()
 
 img_set_options = dict(repo_dir=args.data_dir, inner_size=224,
@@ -85,6 +87,7 @@ callbacks = Callbacks(model, eval_set=test, metric=top5, **args.callback_args)
 
 model.load_params(args.model_file)
 mets=model.eval(test, metric=TopKMisclassification(k=5))
-print 'Loss = %f' % mets[0]
-print 'Top 1 Accuracy = %.1f' % ((1.0-mets[1])*100.0)
-print 'Top 5 Accuracy = %.1f' % ((1.0-mets[2])*100.0)
+print 'Validation set metrics:'
+print 'LogLoss: %.2f, Accuracy: %.1f %% (Top-1), %.1f %% (Top-5)' % (mets[0],
+                                                                    (1.0-mets[1])*100,
+                                                                    (1.0-mets[2])*100)
