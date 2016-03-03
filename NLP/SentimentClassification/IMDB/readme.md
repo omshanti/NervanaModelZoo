@@ -11,7 +11,8 @@ script shows how to train the model.
 ### Trained weights
 
 The trained weights file can be downloaded from AWS using the following link:
-[imdb_lstm.p]( https://s3-us-west-1.amazonaws.com/nervana-modelzoo/imdb_lstm/imdb_lstm.p).
+[imdb_lstm.p][S3_WEIGHTS_FILE].
+[S3_WEIGHTS_FILE]: https://s3-us-west-1.amazonaws.com/nervana-modelzoo/imdb_lstm/imdb_lstm.p
 
 ### Performance
 

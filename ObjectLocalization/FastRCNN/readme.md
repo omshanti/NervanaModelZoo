@@ -25,7 +25,8 @@ shows how to train and run this model.
 ### Trained weights
 
 The trained model weights can be downloaded from AWS using the following link:
-[trained Fast-RCNN model weights](https://s3-us-west-1.amazonaws.com/nervana-modelzoo/frcn_alexnet_fc_only.p).
+[trained Fast-RCNN model weights][S3_WEIGHTS_FILE].
+[S3_WEIGHTS_FILE]: https://s3-us-west-1.amazonaws.com/nervana-modelzoo/frcn_alexnet_fc_only.p
 
 The details of this trained model:
 

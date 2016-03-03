@@ -19,6 +19,7 @@ Reference:
    See J.Li et al, EMNLP2015 - http://arxiv.org/pdf/1503.00185v5.pdf
 $ python examples/imdb_lstm.py -e 2 -eval 1 --rlayer_type lstm
 """
+import os
 
 from neon.backends import gen_backend
 from neon.data.dataloaders import load_imdb
@@ -38,7 +39,8 @@ parser = NeonArgparser(__doc__)
 parser.add_argument('--rlayer_type', default='lstm',
                     choices=['bilstm', 'lstm', 'birnn', 'rnn'],
                     help='type of recurrent layer to use (lstm, bilstm, rnn, birnn)')
-
+parser.add_argument('--test_only', action='store_true',
+                    help='skip fitting - evaluate metrics on trained model weights')
 args = parser.parse_args(gen_be=False)
 
 # hyperparameters from the reference
@@ -99,8 +101,12 @@ optimizer = Adagrad(learning_rate=0.01, gradient_clip_value=gradient_clip_value)
 callbacks = Callbacks(model, eval_set=valid_set, **args.callback_args)
 
 # train model
-model.fit(train_set, optimizer=optimizer, num_epochs=args.epochs, cost=cost, callbacks=callbacks)
+if not args.test_only:
+    model.fit(train_set, optimizer=optimizer, num_epochs=args.epochs, cost=cost, callbacks=callbacks)
+else:
+    if args.model_file is None:
+        raise ValueError('To run test only need to specify a model weights file')
 
 # eval model
-print "Train Accuracy - ", 100 * model.eval(train_set, metric=Accuracy())
-print "Test  Accuracy - ", 100 * model.eval(valid_set, metric=Accuracy())
+print "Train Accuracy = %f" % (100 * model.eval(train_set, metric=Accuracy()))
+print "Test  Accuracy = %f" % (100 * model.eval(valid_set, metric=Accuracy()))

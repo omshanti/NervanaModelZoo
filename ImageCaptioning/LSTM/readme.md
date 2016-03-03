@@ -6,7 +6,9 @@ generator](http://arxiv.org/abs/1411.4555)" and code from Karpathy's
 
 model_script: [image_caption.py](https://github.com/nervanazoo/NervanaModelZoo/blob/master/ImageCaptioning/LSTM/image_caption.py)
 
-model_weights: [image_caption_flickr8k.p](https://s3-us-west-1.amazonaws.com/nervana-modelzoo/imagecaption/lstm/image_caption_flickr8k.p)
+model_weights: [image_caption_flickr8k.p][S3_WEIGHTS_FILE]
+
+[S3_WEIGHTS_FILE]: https://s3-us-west-1.amazonaws.com/nervana-modelzoo/imagecaption/lstm/image_caption_flickr8k.p
 
 neon_commit: [e7ab2c2e2](https://github.com/NervanaSystems/neon/commit/e7ab2c2e27f113a4d36d17ba8c79546faed7d916)
 

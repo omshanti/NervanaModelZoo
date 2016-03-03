@@ -22,28 +22,20 @@ WEIGHTS_FILE=${WEIGHTS_URL##*/}
 echo "Downloading weights file from ${WEIGHTS_URL}"
 curl -o $WEIGHTS_FILE $WEIGHTS_URL 2> /dev/null
 
-python -u alexnet_neon.py --test_only -i ${EXECUTOR_NUMBER} -w /usr/local/data/I1K/macrobatches/ -vvv --model_file $WEIGHTS_FILE --no_progress_bar > output.dat
+python -u fast_rcnn_alexnet.py --test_only -i ${EXECUTOR_NUMBER} -vvv --model_file $WEIGHTS_FILE --no_progress_bar > output.dat
 rc=$?
 if [ $rc -ne 0 ];then
     exit $rc
 fi
 
 # get the top-1 misclass
-top1=`tail -n 1 output.dat | sed "s/.*Accuracy: //" | sed "s/ \% (Top-1).*//"`
-top5=`tail -n 1 output.dat | sed "s/.*(Top-1), //" | sed "s/ \%.*//"`
+acc=`tail -n 2 output.dat | grep "accuracy" | sed "s/.*accuracy = //" | sed "s/ \%.*//"`
 
-top1pass=`echo $top1'>'53 | bc -l`
-top5pass=`echo $top5'>'78 | bc -l`
+pass=`echo $acc'>'53 | bc -l`
 
 rc=0
-if [ $top1pass -ne 1 ];then
-    echo "Top1 Accuracy too low "$top1
+if [ $pass -ne 1 ];then
+    echo "Accuracy too low "$acc
     rc=1
 fi
-
-if [ $top5pass -ne 1 ];then
-    echo "Top5 Accuracy too low "$top5
-    rc=2
-fi
-
 exit $rc

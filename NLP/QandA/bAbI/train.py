@@ -62,6 +62,8 @@ parser.add_argument('-t', '--task', type=int, default='1', choices=xrange(1, 21)
                     help='the task ID to train/test on from bAbI dataset (1-20)')
 parser.add_argument('--rlayer_type', default='gru', choices=['gru', 'lstm'],
                     help='type of recurrent layer to use (gru or lstm)')
+parser.add_argument('--test_only', action='store_true',
+                    help='skip fitting - evaluate metrics on trained model weights')
 args = parser.parse_args(gen_be=False)
 
 # Override save path if None
@@ -87,11 +89,12 @@ model = create_model(babi.vocab_size, args.rlayer_type)
 callbacks = Callbacks(model, eval_set=valid_set, **args.callback_args)
 
 # train model
-model.fit(train_set,
-          optimizer=Adam(),
-          num_epochs=args.epochs,
-          cost=GeneralizedCost(costfunc=CrossEntropyMulti()),
-          callbacks=callbacks)
+if args.test_only:
+    model.fit(train_set,
+              optimizer=Adam(),
+              num_epochs=args.epochs,
+              cost=GeneralizedCost(costfunc=CrossEntropyMulti()),
+              callbacks=callbacks)
 
 # output accuracies
 print('Train Accuracy = %.1f%%' % (model.eval(train_set, metric=Accuracy())*100))

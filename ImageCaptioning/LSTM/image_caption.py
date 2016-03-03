@@ -25,6 +25,8 @@ Referece:
 https://github.com/karpathy/neuraltalk
 
 """
+import os
+
 from neon.backends import gen_backend
 from neon.data import load_flickr8k, ImageCaption, ImageCaptionTest
 from neon.initializers import Uniform, Constant, Array
@@ -37,6 +39,8 @@ from neon.util.argparser import NeonArgparser, extract_valid_args
 
 # parse the command line arguments
 parser = NeonArgparser(__doc__)
+parser.add_argument('--test_only', action='store_true',
+                            help='skip fitting - evaluate metrics on trained model weights')
 args = parser.parse_args(gen_be=False)
 
 # hyperparameters
@@ -69,14 +73,6 @@ layers = [
 
 cost = GeneralizedCostMask(costfunc=CrossEntropyMulti(usebits=True))
 
-# configure callbacks
-checkpoint_model_path = "~/image_caption2.pickle"
-if args.callback_args['save_path'] is None:
-    args.callback_args['save_path'] = checkpoint_model_path
-
-if args.callback_args['serialize'] is None:
-    args.callback_args['serialize'] = 1
-
 model = Model(layers=layers)
 
 callbacks = Callbacks(model, **args.callback_args)
@@ -84,10 +80,13 @@ callbacks = Callbacks(model, **args.callback_args)
 opt = RMSProp(decay_rate=0.997, learning_rate=0.0005, epsilon=1e-8, gradient_clip_value=1)
 
 # train model
-model.fit(train_set, optimizer=opt, num_epochs=num_epochs, cost=cost, callbacks=callbacks)
+if not args.test_only:
+    model.fit(train_set, optimizer=opt, num_epochs=num_epochs, cost=cost, callbacks=callbacks)
+else:
+    if args.model_file is None:
+        raise ValueError('To run test only need to specify a model file')
+    model.initialize(train_set, cost=cost)
 
-# load model (if exited) and evaluate bleu score on test set
-model.load_params(checkpoint_model_path)
 test_set = ImageCaptionTest(path=data_path)
 sents, targets = test_set.predict(model)
 test_set.bleu_score(sents, targets)

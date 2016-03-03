@@ -94,6 +94,8 @@ def load_imagenet_weights(model, path):
 
 # parse the command line arguments
 parser = NeonArgparser(__doc__)
+parser.add_argument('--test_only', action='store_true',
+                    help='skip fitting - evaluate metrics on trained model weights')
 args = parser.parse_args(gen_be=False)
 
 # Override save path if None
@@ -195,12 +197,13 @@ cost = Multicost(costs=[GeneralizedCost(costfunc=CrossEntropyMulti()),
 
 callbacks = Callbacks(model, **args.callback_args)
 
-model.fit(train_set, optimizer=optimizer,
-          num_epochs=num_epochs, cost=cost, callbacks=callbacks)
+if not args.test_only:
+    model.fit(train_set, optimizer=optimizer,
+              num_epochs=num_epochs, cost=cost, callbacks=callbacks)
 
 
 print 'running eval on the training set...'
 metric_train = model.eval(train_set, metric=ObjectDetection())
-print 'Train: label accuracy - {}%, object deteciton SmoothL1Loss - {}'.format(
+print 'Training set:\nlabel accuracy = {}%\nobject deteciton SmoothL1Loss = {}'.format(
     metric_train[0]*100,
     metric_train[1])

@@ -53,7 +53,9 @@ Please enter a story:
 At which point you can play around with your own stories, questions, and answers.
 
 ### Trained weights
-The trained weights file for a GRU network trained on task 15 can be downloaded from AWS using the following link: [trained model weights on task 15](https://s3-us-west-1.amazonaws.com/nervana-modelzoo/bAbI/babi_task15.p).
+The trained weights file for a GRU network trained on task 15 can be downloaded from AWS
+using the following link: [trained model weights on task 15][S3_WEIGHTS_FILE].
+[S3_WEIGHTS_FILE]: https://s3-us-west-1.amazonaws.com/nervana-modelzoo/bAbI/babi_task15.p
 
 ### Performance
 Task Number                  | FB LSTM Baseline | Neon QA GRU

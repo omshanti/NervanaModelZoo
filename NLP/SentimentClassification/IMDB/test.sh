@@ -22,27 +22,27 @@ WEIGHTS_FILE=${WEIGHTS_URL##*/}
 echo "Downloading weights file from ${WEIGHTS_URL}"
 curl -o $WEIGHTS_FILE $WEIGHTS_URL 2> /dev/null
 
-python -u alexnet_neon.py --test_only -i ${EXECUTOR_NUMBER} -w /usr/local/data/I1K/macrobatches/ -vvv --model_file $WEIGHTS_FILE --no_progress_bar > output.dat
+python -u imdb_lstm.py --test_only -i ${EXECUTOR_NUMBER} -vvv --model_file $WEIGHTS_FILE --no_progress_bar > output.dat
 rc=$?
 if [ $rc -ne 0 ];then
     exit $rc
 fi
 
 # get the top-1 misclass
-top1=`tail -n 1 output.dat | sed "s/.*Accuracy: //" | sed "s/ \% (Top-1).*//"`
-top5=`tail -n 1 output.dat | sed "s/.*(Top-1), //" | sed "s/ \%.*//"`
+train_acc=`tail -n 2 output.dat | grep "Train" | sed "s/.*Accuracy = //"` 
+test_acc=`tail -n 2 output.dat |  grep "Test" | sed "s/.*Accuracy = //"` 
 
-top1pass=`echo $top1'>'53 | bc -l`
-top5pass=`echo $top5'>'78 | bc -l`
+train_pass=`echo $train_acc'>'47 | bc -l`
+test_pass=`echo $test_acc'>'47 | bc -l`
 
 rc=0
-if [ $top1pass -ne 1 ];then
-    echo "Top1 Accuracy too low "$top1
+if [ $train_pass -ne 1 ];then
+    echo "Train Accuracy too low "$train_acc
     rc=1
 fi
 
-if [ $top5pass -ne 1 ];then
-    echo "Top5 Accuracy too low "$top5
+if [ $test_pass -ne 1 ];then
+    echo "Test Accuracy too low "$test_acc
     rc=2
 fi
 
