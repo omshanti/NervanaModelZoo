@@ -32,6 +32,9 @@ fi
 train_acc=`tail -n 2 output.dat | grep "Train" | sed "s/.*Accuracy = //"` 
 test_acc=`tail -n 2 output.dat |  grep "Test" | sed "s/.*Accuracy = //"` 
 
+train_pass=0
+test_pass=0
+
 train_pass=`echo $train_acc'>'47 | bc -l`
 test_pass=`echo $test_acc'>'47 | bc -l`
 

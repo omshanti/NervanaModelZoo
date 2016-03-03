@@ -32,6 +32,9 @@ fi
 top1=`tail -n 1 output.dat | sed "s/.*Accuracy: //" | sed "s/ \% (Top-1).*//"`
 top5=`tail -n 1 output.dat | sed "s/.*(Top-1), //" | sed "s/ \%.*//"`
 
+top1pass=0
+top5pass=0
+
 top1pass=`echo $top1'>'53 | bc -l`
 top5pass=`echo $top5'>'78 | bc -l`
 

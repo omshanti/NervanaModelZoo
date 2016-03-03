@@ -32,6 +32,9 @@ fi
 trainacc=`tail -n 2 output.dat | grep "Train" | sed "s/.*Accuracy = //" | sed "s/ \%.*//"`
 testacc=`tail -n 2 output.dat | grep "Test" | sed "s/.*Accuracy = //" | sed "s/ \%.*//"`
 
+trainpass=0
+testpass=0
+
 trainpass=`echo $trainacc'>'53 | bc -l`
 testpass=`echo $testacc'>'53 | bc -l`
 

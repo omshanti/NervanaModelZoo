@@ -32,6 +32,7 @@ fi
 # get the top-1 misclass
 top1=`tail -n 1 output.dat | sed "s/.*Accuracy: //" | sed "s/ \% (Top-1).*//"`
 
+top1pass=0
 top1pass=`echo $top1'>'85 | bc -l`
 
 rc=0
