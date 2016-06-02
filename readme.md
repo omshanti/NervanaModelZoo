@@ -1,3 +1,9 @@
+# DEPRECATED
+THIS REPO IS DEPRECATED AND OBSOLETE
+Please visit the current model zoo at [https://github.com/NervanaSystems/ModelZoo](https://github.com/NervanaSystems/ModelZoo)
+
+Sorry for the inconvenience.
+
 This repo contains a number of standard deep learning models that can be run with the neon libraries.  The
 specific model type subdirectories include more detailed information on the various models.  Below is a summary
 of the vairous tasks and models included here that address those tasks.
